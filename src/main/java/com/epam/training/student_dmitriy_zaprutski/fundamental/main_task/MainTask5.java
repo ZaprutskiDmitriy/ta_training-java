@@ -1,12 +1,24 @@
 package com.epam.training.student_dmitriy_zaprutski.fundamental.main_task;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainTask5 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter number from 1 to 12:");
-        int numberOfMonth = scanner.nextInt();
+        int numberOfMonth = 0;
+        boolean continueLoop = true;
+        do {
+            try {
+                System.out.println("Enter number from 1 to 12:");
+                numberOfMonth = scanner.nextInt();
+                continueLoop = false;
+            } catch (InputMismatchException e) {
+                e.printStackTrace();
+                scanner.nextLine();
+                System.out.println("Only integer values allowed");
+            }
+        } while (continueLoop);
         switch (numberOfMonth) {
             case 1:
                 System.out.println("January");
