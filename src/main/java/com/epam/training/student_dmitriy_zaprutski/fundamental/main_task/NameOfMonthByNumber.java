@@ -3,7 +3,7 @@ package com.epam.training.student_dmitriy_zaprutski.fundamental.main_task;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class MainTask5 {
+public class NameOfMonthByNumber {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int numberOfMonth = 0;

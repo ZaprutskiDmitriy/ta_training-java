@@ -3,7 +3,7 @@ package com.epam.training.student_dmitriy_zaprutski.fundamental.main_task;
 import java.util.Random;
 import java.util.Scanner;
 
-public class MainTask3 {
+public class OutputOfRandomNumbers {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number of numbers:");

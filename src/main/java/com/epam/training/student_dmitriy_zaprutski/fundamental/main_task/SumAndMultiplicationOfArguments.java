@@ -1,6 +1,6 @@
 package com.epam.training.student_dmitriy_zaprutski.fundamental.main_task;
 
-public class MainTask4 {
+public class SumAndMultiplicationOfArguments {
     public static void main(String[] args) {
         int sum = 0;
         int mult = 1;
