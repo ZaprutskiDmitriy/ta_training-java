@@ -16,7 +16,7 @@ public class ReplacingFirstAndLastWordsTaskFive {
     public static void main(String[] args) throws IOException {
         String text = ReadFileToString.readUsingBufferedReader(DATA_FILE_PATH);
 
-        String[] sentences = text.split("[\\.!?]");
+        String[] sentences = text.split("[/.!?]");
 
         Pattern pattern = Pattern.compile("\\w+", Pattern.UNICODE_CHARACTER_CLASS
                 | Pattern.CASE_INSENSITIVE);

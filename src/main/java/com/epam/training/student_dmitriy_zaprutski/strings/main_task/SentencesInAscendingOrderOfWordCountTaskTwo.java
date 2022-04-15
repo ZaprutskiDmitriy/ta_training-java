@@ -16,7 +16,7 @@ public class SentencesInAscendingOrderOfWordCountTaskTwo {
     public static void main(String[] args) throws IOException {
         String text = ReadFileToString.readUsingBufferedReader(DATA_FILE_PATH);
 
-        String[] sentences = text.split("[\\.!?]");
+        String[] sentences = text.split("[/.!?]");
 
         Pattern pattern = Pattern.compile("\\w+", Pattern.UNICODE_CHARACTER_CLASS
                 | Pattern.CASE_INSENSITIVE);
@@ -32,7 +32,7 @@ public class SentencesInAscendingOrderOfWordCountTaskTwo {
             sentencesMap.put(sentence.trim(), words.size());
         }
         sentencesMap.entrySet().stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue())
+                .sorted(Map.Entry.comparingByValue())
                 .forEach(System.out::println);
     }
 }

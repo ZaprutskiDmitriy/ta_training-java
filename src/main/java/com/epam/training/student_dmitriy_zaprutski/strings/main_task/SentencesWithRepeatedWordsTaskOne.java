@@ -16,7 +16,7 @@ public class SentencesWithRepeatedWordsTaskOne {
     public static void main(String[] args) throws IOException {
         String text = ReadFileToString.readUsingBufferedReader(DATA_FILE_PATH);
 
-        String[] sentences = text.split("[\\.!?]");
+        String[] sentences = text.split("[/.!?]");
 
         Pattern pattern = Pattern.compile("\\w+", Pattern.UNICODE_CHARACTER_CLASS
                 | Pattern.CASE_INSENSITIVE);
@@ -29,29 +29,29 @@ public class SentencesWithRepeatedWordsTaskOne {
                 wordsInCurrentSentence.add(matcher.group().toLowerCase());
             }
 
-            for (int i = 0; i < wordsInCurrentSentence.size(); i++) {
+            for (String wordInCurrentSentence : wordsInCurrentSentence) {
                 int countOfSentencesWithSuchWord = 0;
-                for (int j = 0; j < sentences.length; j++) {
-                    Matcher matcher1 = pattern.matcher(sentences[j]);
+                for (String otherSentence : sentences) {
+                    Matcher matcher1 = pattern.matcher(otherSentence);
                     List<String> words = new ArrayList<>();
                     while (matcher1.find()) {
                         words.add(matcher1.group().toLowerCase());
                     }
-                    for (int k = 0; k < words.size(); k++) {
-                        if (words.get(k).equalsIgnoreCase(wordsInCurrentSentence.get(i))) {
+                    for (String word : words) {
+                        if (word.equalsIgnoreCase(wordInCurrentSentence)) {
                             countOfSentencesWithSuchWord++;
                             break;
                         }
                     }
                 }
                 System.out.println("---------------------------------------");
-                System.out.println("word : " + wordsInCurrentSentence.get(i));
+                System.out.println("word : " + wordInCurrentSentence);
                 System.out.println("number of repetitions : " + countOfSentencesWithSuchWord);
-                countsMap.put(wordsInCurrentSentence.get(i), countOfSentencesWithSuchWord);
+                countsMap.put(wordInCurrentSentence, countOfSentencesWithSuchWord);
             }
         }
         System.out.println(countsMap);
-        Optional<Map.Entry<String, Integer>> max = countsMap.entrySet().stream().max(Map.Entry.<String, Integer>comparingByValue());
-        System.out.println("Maximum number of sentecses " + max.get().getValue() + " with word: '" + max.get().getKey() + "'");
+        Optional<Map.Entry<String, Integer>> max = countsMap.entrySet().stream().max(Map.Entry.comparingByValue());
+        max.ifPresent(stringIntegerEntry -> System.out.println("Maximum number of sentences " + stringIntegerEntry.getValue() + " with word: '" + stringIntegerEntry.getKey() + "'"));
     }
 }

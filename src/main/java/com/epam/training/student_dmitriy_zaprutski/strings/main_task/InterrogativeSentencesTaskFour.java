@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,9 +46,9 @@ public class InterrogativeSentencesTaskFour {
                 words.add(matcher1.group().toLowerCase());
             }
 
-            for (int i = 0; i < words.size(); i++) {
-                if (words.get(i).length() == SEARCH_WORDS_LENGTH) {
-                    wordsWithCertainLength.add(words.get(i));
+            for (String word : words) {
+                if (word.length() == SEARCH_WORDS_LENGTH) {
+                    wordsWithCertainLength.add(word);
                 }
             }
         }

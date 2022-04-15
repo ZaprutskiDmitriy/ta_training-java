@@ -17,7 +17,7 @@ public class RepeatedWordsInSentenceTaskOne {
     public static void main(String[] args) throws IOException {
         String text = ReadFileToString.readUsingBufferedReader(DATA_FILE_PATH);
 
-        String[] sentences = text.split("[\\.!?]");
+        String[] sentences = text.split("[/.!?]");
 
         Pattern pattern = Pattern.compile("\\w+", Pattern.UNICODE_CHARACTER_CLASS
                 | Pattern.CASE_INSENSITIVE);
@@ -34,7 +34,7 @@ public class RepeatedWordsInSentenceTaskOne {
             if (!setOfDuplicates.isEmpty()) {
                 System.out.println(sentence.trim());
                 System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-                setOfDuplicates.stream().forEach(System.out::println);
+                setOfDuplicates.forEach(System.out::println);
                 System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             }
 
@@ -43,6 +43,7 @@ public class RepeatedWordsInSentenceTaskOne {
                 for (int j = i + 1; j < words.size(); j++) {
                     if (words.get(i).equalsIgnoreCase(words.get(j))) {
                         isExistDuplicateWords = true;
+                        break;
                     }
                 }
                 if (isExistDuplicateWords) {

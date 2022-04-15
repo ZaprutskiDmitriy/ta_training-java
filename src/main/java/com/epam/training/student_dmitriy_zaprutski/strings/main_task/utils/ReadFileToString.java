@@ -13,16 +13,22 @@ public class ReadFileToString {
     public static void main(String[] args) throws IOException {
         String fileName = "strings_data.txt";
 
-//        String contents = readUsingScanner(fileName);
-//        String contents = readUsingFiles(fileName);
-        String contents = readUsingBufferedReader(fileName);
-        System.out.println(contents);
-        System.out.println(contents.length());
+        String contents1 = readUsingScanner(fileName).trim();
+        String contents2 = readUsingFiles(fileName).trim();
+        String contents3 = readUsingBufferedReader(fileName).trim();
+        System.out.println(contents1);
+        System.out.println(contents1.length());
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println(contents2);
+        System.out.println(contents2.length());
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println(contents3);
+        System.out.println(contents3.length());
     }
 
     public static String readUsingBufferedReader(String fileName) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
-        String line = null;
+        String line;
         StringBuilder stringBuilder = new StringBuilder();
         String ls = System.getProperty("line.separator");
         while ((line = reader.readLine()) != null) {
